@@ -1,0 +1,57 @@
+{% extends 'produtos/base.html' %}
+{% load static %}
+
+{% block title %} 
+    <title>Produtos</title>
+{% endblock %}
+
+{% block header %}
+    <a href="{% url 'products' %}">Produtos</a>
+{% endblock %}
+
+{% block content %} 
+<section id="products" class="products">
+    <div class="menu">
+        <h5 align="center">Categorias</h5>
+        <div class="treeview w-20 border">
+            <ul id="categoryList">
+                {% for categoria in categorias %}
+                    <li> <i class="fas fa-angle-right rotate"></i>
+                        {% if subcategorias %} 
+                            <span class="caret" onclick="openSubCategorys(this)">{{ categoria.category }}</span>
+                            <ul class="nested">
+                                {% for subcategoria in subcategorias %}
+                                    {% if subcategoria.category_id == categoria.id %}
+                                        <input type="checkbox" class="checkbox" id="checkCategory-{{ subcategoria.id }}" onchange="updateFilter()" > <a id="subCategory-{{ subcategoria.id }}" onclick="filter(this)">{{ subcategoria.subcategory }}</a><br>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="topbar">
+            Ordenar por:
+            <select class="form-select" aria-label="Default select example" onchange="updateFilter()">
+                <option selected>Sem filtro...</option>
+                <option value="1">Preço Menor a Maior </option>
+                <option value="2">Preço Maior a Menor </option>
+            </select>
+        </div>
+        <div id="content-products">
+            <div class="row row-cols-4" id="first-row"> </div>
+            <div class="row row-cols-4" id="second-row"> </div>
+        </div>
+        <div class="paginator" id="paginator"></div>
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+         
+        </div>
+    </div>
+    <script>
+        requestProducts();
+    </script>
+</section>
+{% endblock %}

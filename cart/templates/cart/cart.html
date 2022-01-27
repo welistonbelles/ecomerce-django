@@ -1,0 +1,72 @@
+{% extends 'produtos/base.html' %}
+{% load static %}
+
+{% block title %} 
+    <title>Carrinho</title>
+{% endblock %}
+
+{% block header %}
+    <a href="{% url 'products' %}">Produtos</a>
+{% endblock %}
+
+{% block content %} 
+<section id="cart" class="cart">
+    <div class="container" style="background-color: white;">
+        
+        <div class="topbar">
+            <div class="row">
+                <div class="col-10">
+                    <h3>Carrinho de compras</h3>
+                </div>
+                <div class="col-2">
+                    <button type="button" id="closeCart" class="btn btn-warning" data-toggle="popover" data-trigger="focus" title="Importante" data-placement="left" data-content="Esta feature será adicionada em breve.">Fechar Pedido</button>
+                </div>
+                {% if cart %}
+                    <a id="emptyCart" onclick="cleanCart(this)">Esvaziar carrinho.</a>
+                    <a id="addProducts" href="{% url 'products' %}" style="display: none">Adicionar novos produtos.</a>
+                {% else %} 
+                    <a id="emptyCart" onclick="cleanCart(this)" style="display: none">Esvaziar carrinho.</a>
+                    <a id="addProducts" href="{% url 'products' %}">Adicionar novos produtos.</a>
+                {% endif %} 
+            </div>
+        </div>
+
+        {% for produto in cart %}
+            <div class="row product cartProduct" id="product-{{ produto.id }}">
+                <div class="col-2 img">
+                    <img src="/media/{{ produto.image }}" >
+                </div>
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-9">
+                            <h4>{{ produto.name }}</h4>
+                        </div>
+                        <div class="col-3">
+                            <h4 class="totalPrice" id="totalPrice-{{ produto.id }}">R$ {{ produto.price }}</h4>
+                        </div>
+                        <br><br>
+                        <input type="number" value="{{ produto.amount }}" min="1" id="totalAmount" onchange="changePriceInCart(this, {{ produto.id }}, {{ produto.baseprice }})" onkeypress="return false">
+                        <a onclick="deleteItemFromCart(this, {{ produto.id }})"><i class="fas fa-trash red"></i> Excluir</a>
+                    </div>
+                    
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6" align="center">
+                Preço total: <strong id="finalPrice">0,00</strong>
+            </div>
+        </div>
+        
+    </div>
+</section>
+<script>
+    updateFinalPrice()
+    document.getElementById('closeCart').onclick = function(e) {
+        $('#closeCart').popover('show', {
+            trigger: 'focus'
+        })
+    }
+</script>
+{% endblock %}

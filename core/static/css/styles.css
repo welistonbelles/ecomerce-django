@@ -1,0 +1,317 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #EAEDED!important;
+}
+
+
+/* Header */
+
+header {
+    position: relative;
+    height: 50px;
+    max-height: 15%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    background-color: rgb(20, 20, 20);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23ffffff' fill-opacity='0.01'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+header a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 30px;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 10px;
+}
+
+.app {
+    width: 100%;
+    height: 90%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about, .account {
+    width: 100%;
+    height: 850px;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart {
+    width: 100%;
+    min-height: 850px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/************************/
+/*       LOGIN          */
+/************************/
+
+.account form {
+    width: 600px;
+    max-width: 95%;
+    padding: 10px;
+}
+
+.account form input {
+    margin-bottom: 10px;
+}
+
+/************************/
+/*      PRODUTOS        */
+/************************/
+
+.products {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;;
+}
+
+
+.products .menu {
+    width: 300px;
+    max-width: 20%;
+    height: 100%;
+    border-right: 2px solid gray;
+}
+
+.products .menu .category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.products .menu .category a {
+    text-decoration: none;
+    color: black;
+}
+
+.products .content {
+    width: 1200px;
+    max-width: 80%;
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.products .content .topbar {
+    width: 100%;
+    height: 10%;
+    max-height: 10%;
+}
+
+.products .content #content-products {
+    width: 100%;
+    height: 80%;
+    max-height: 80%;
+    margin: 0px;
+    position: relative;
+}
+
+.products .content #content-products .row {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0px;
+}
+
+.products .content #content-products .row .col{
+    height: 310px;
+    max-height: 50%;
+}
+
+.products .content .paginator {
+    width: 100%;
+    height: 10%;
+    max-height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.products .content .paginator li {
+    cursor: pointer;
+}
+
+.products .content .paginator .disabled {
+    cursor:auto
+}
+
+.products .content .image-content {
+    width: 100%;
+    height: 80%;
+    max-height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.products .content img {
+    max-width: 100%;
+    max-height: 90%;
+}
+
+
+.modal-body input[type="number"] {
+    width: 40px;
+}
+
+.modal-body i {
+    cursor: pointer;    
+}
+
+/****************/
+/*  Categorias  */
+/****************/
+.products .menu ul #categoryList{
+    list-style-type: none;
+}
+
+#categoryList {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the caret/arrow */
+.products .menu ul .caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.products .menu ul .rotate {
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.products .menu ul .rotate-down {
+    transform: rotate(90deg);
+    transition: 0.2s;
+}
+
+/* Hide the nested list */
+.products .menu ul .nested {
+    display: none;
+    padding-left: 20px;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.products .menu ul .active {
+    display: block;
+}
+
+
+/********************************/
+/*           CART               */
+/********************************/
+
+.cart .container {
+    height: 100%;
+    min-height: 800px;
+    width: 100%;
+    padding: 30px;
+}
+
+.cart .container .product {
+    min-height: 140px;
+    padding: 10px;
+    border-bottom: 1px solid gray;
+    margin: 0;
+}
+
+.cart .container img {
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.cart .container .col-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart .container .topbar {
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+.cart .container .topbar h3 {
+    margin-bottom: 20px;
+}
+
+
+.cart .container #totalAmount {
+    width: 40px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid black;
+    margin-left: 15px;
+}
+
+.cart .container a {
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+
+.red {
+    color: rgb(204, 46, 46) !important;
+}
+
+.green {
+    color: rgb(46, 204, 113) !important;
+}
+
+
+/* Footer */
+
+footer {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.603);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
